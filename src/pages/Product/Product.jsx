@@ -7,6 +7,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { FiEye, FiUser, FiEdit2 } from "react-icons/fi";
 import { MdBlock, MdLockOpen } from "react-icons/md";
+import { API } from "../../App";
 
  function Product() {
   const [products, setProducts] = useState([]);
@@ -16,7 +17,7 @@ import { MdBlock, MdLockOpen } from "react-icons/md";
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:3002/api/admin/products", {
+      const res = await axios.get(`${API}/api/admin/products`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProducts(res.data || []);
@@ -35,7 +36,7 @@ import { MdBlock, MdLockOpen } from "react-icons/md";
   const toggleBlock = async (id, current) => {
     try {
       await axios.put(
-        `http://localhost:3002/api/admin/product/${id}/block`,
+        `${API}/api/admin/product/${id}/block`,
         { block: !current },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -47,11 +48,11 @@ import { MdBlock, MdLockOpen } from "react-icons/md";
   };
 
   const handleView = (id) => {
-    window.open(`http://localhost:5173/product/${id}`, "_blank");
+    window.open(`https://olx-frontend-code.vercel.app/product/${id}`, "_blank");
   };
 
   const handleUserProfile = (userId) => {
-    window.open(`http://localhost:5173/profile/${userId}`, "_blank");
+    window.open(`https://olx-frontend-code.vercel.app/profile/${userId}`, "_blank");
   };
 
   const handleEdit = (id) => {
@@ -80,7 +81,7 @@ import { MdBlock, MdLockOpen } from "react-icons/md";
                   <img
                     src={
                       p.images?.[0]
-                        ? `http://localhost:3002/${p.images[0]}`
+                        ? `${API}/${p.images[0]}`
                         : "/no-image.jpg"
                     }
                     alt={p.title}
@@ -96,7 +97,7 @@ import { MdBlock, MdLockOpen } from "react-icons/md";
                     <p className="text-sm text-gray-500 mt-1">
                       Uploaded by:{" "}
                       <span className="font-medium text-gray-800">
-                        {p.userName || "Unknown User"}
+                        {p.email || "Unknown User"}
                       </span>
                     </p>
                     {p.blocked && (
@@ -115,19 +116,19 @@ import { MdBlock, MdLockOpen } from "react-icons/md";
                     <FiEye /> View
                   </button>
 
-                  <button
+                  {/* <button
                     onClick={() => handleUserProfile(p.userId)}
                     className="flex items-center gap-1 bg-indigo-500 text-white px-3 py-1 rounded hover:bg-indigo-600"
                   >
                     <FiUser /> User
-                  </button>
+                  </button> */}
 
-                  <button
+                  {/* <button
                     onClick={() => handleEdit(p._id)}
                     className="flex items-center gap-1 bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
                   >
                     <FiEdit2 /> Edit
-                  </button>
+                  </button> */}
 
                   <button
                     onClick={() => toggleBlock(p._id, p.blocked)}

@@ -4,7 +4,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { ClipLoader } from "react-spinners";
 import { IoEyeOutline } from "react-icons/io5";
-import { LuEyeClosed } from "react-icons/lu";
+import { API } from "../../App";
+// import { LuEyeClosed } from "react-icons/lu";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -19,8 +20,8 @@ export default function Login() {
     setLoading(true);
 
     try {
-  const api = "http://localhost:3002/api/auth/login";
-  const res = await axios.post(api, { email: email.toLowerCase(), password });
+  const api = `${API}/api/auth/login`;
+  const res = await axios.post(api, { email: email.toLowerCase(), password }, { withCredentials: true });
 
       localStorage.setItem("token", res.data.token);
       toast.success(res.data.message || "Login successful");

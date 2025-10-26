@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { FaTrash } from "react-icons/fa";
+import { API } from "../../App";
 
 export default function Categories() {
   const [name, setName] = useState("");
@@ -16,7 +17,7 @@ export default function Categories() {
   // ✅ Fetch all categories
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:3002/api/categories");
+      const res = await axios.get(`${API}/api/categories`);
       setList(res.data);
     } catch {
       toast.error("Unable to fetch categories");
@@ -37,7 +38,7 @@ export default function Categories() {
 
     try {
       const res = await axios.post(
-        "http://localhost:3002/api/categories",
+        `${API}/api/categories`
         { name },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -64,7 +65,7 @@ export default function Categories() {
 
     setDeleting(id);
     try {
-      const res = await axios.delete(`http://localhost:3002/api/categories/${id}`, {
+      const res = await axios.delete(`${API}/api/categories/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
