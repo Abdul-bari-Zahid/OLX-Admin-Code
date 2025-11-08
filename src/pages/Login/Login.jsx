@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { ClipLoader } from "react-spinners";
 import { IoEyeOutline } from "react-icons/io5";
 import { API } from "../../App";
-// import { LuEyeClosed } from "react-icons/lu";
+// import LuEyeClosed from "react-icons/lu";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -71,7 +71,7 @@ export default function Login() {
                 onClick={() => setShow(!show)}
                 className="px-2 text-xl text-gray-600"
               >
-                {show ? <IoEyeOutline /> : <LuEyeClosed />}
+                {/* {show ? <IoEyeOutline /> : <LuEyeClosed />} */}
               </button>
             </div>
           </div>

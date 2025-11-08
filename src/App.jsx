@@ -12,7 +12,9 @@ import Categories from "./pages/category/Cagegory.jsx";
 import Login from "./pages/Login/Login";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-export const API = "https://olx-backend-code.vercel.app/";
+// export const API = "https://olx-backend-code.vercel.app";
+export const API = "http://localhost:3002";
+
 function App() {
   const token = localStorage.getItem("token");
   // simple auth check; for dev: assume admin token present

@@ -14,12 +14,14 @@ export default function Categories() {
 
   const token = localStorage.getItem("token");
 
-  // ✅ Fetch all categories
+ 
   const fetchCategories = async () => {
     try {
       const res = await axios.get(`${API}/api/categories`);
       setList(res.data);
-    } catch {
+    } catch (err) {
+      // use a named error parameter for compatibility with older parsers
+      console.error(err);
       toast.error("Unable to fetch categories");
     }
   };
@@ -31,14 +33,16 @@ export default function Categories() {
   // ✅ Add category
   const handleAdd = async (e) => {
     e.preventDefault();
-    if (!name.trim()) return toast.error("Category name cannot be empty");
+    if (!name.trim()){
+      return toast.error("Category name cannot be empty")
+    };
 
     setAdding(true);
     const toastId = toast.info("Adding category...", { autoClose: false });
 
     try {
       const res = await axios.post(
-        `${API}/api/categories`
+        `${API}/api/categories`,
         { name },
         { headers: { Authorization: `Bearer ${token}` } }
       );

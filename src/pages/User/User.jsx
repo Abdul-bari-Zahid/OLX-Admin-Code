@@ -14,6 +14,7 @@ function Users() {
   const fetchUsers = async () => {
     try {
       setLoading(true);
+      console.log("Fetching users from API:", `${API}/api/admin/users`);
       const res = await axios.get(`${API}/api/users`);
       setUsers(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
