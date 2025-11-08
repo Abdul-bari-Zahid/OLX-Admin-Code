@@ -13,7 +13,7 @@ import Login from "./pages/Login/Login";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 // export const API = "https://olx-backend-code.vercel.app";
-export const API = "http://localhost:3002";
+export const API = "https://olx-backend-code-w2v6.vercel.app";
 
 function App() {
   const token = localStorage.getItem("token");

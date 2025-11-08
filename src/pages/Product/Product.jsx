@@ -11,7 +11,7 @@ import { API } from "../../App";
 
  function Product() {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const  [loading, setLoading] = useState(false);
   const token = localStorage.getItem("token");
 
   const fetchProducts = async () => {
@@ -48,11 +48,11 @@ import { API } from "../../App";
   };
 
   const handleView = (id) => {
-    window.open(`https://olx-frontend-code.vercel.app/product/${id}`, "_blank");
+    window.open(`https://olx-frontend-code-78om.vercel.app/product/${id}`, "_blank");
   };
 
   const handleUserProfile = (userId) => {
-    window.open(`https://olx-frontend-code.vercel.app/profile/${userId}`, "_blank");
+    window.open(`https://olx-frontend-code-78om.vercel.app/profile/${userId}`, "_blank");
   };
 
   const handleEdit = (id) => {
