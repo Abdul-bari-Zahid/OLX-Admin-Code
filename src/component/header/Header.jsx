@@ -6,7 +6,6 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Clear admin token and redirect to login
     localStorage.removeItem("token");
     toast.success("Logged out");
     navigate("/login");

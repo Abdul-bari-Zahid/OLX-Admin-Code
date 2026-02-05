@@ -36,7 +36,6 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // ensure axios has Authorization header if token present
     setupAxios();
     fetchStats();
   }, []);

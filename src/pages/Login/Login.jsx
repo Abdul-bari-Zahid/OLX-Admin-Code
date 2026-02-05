@@ -20,7 +20,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-  const api = `${API}/api/auth/login`;
+  const api = `${API}/api/admin-auth/login`;
   const res = await axios.post(api, { email: email.toLowerCase(), password }, { withCredentials: true });
 
       localStorage.setItem("token", res.data.token);

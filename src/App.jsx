@@ -2,6 +2,7 @@
 
 
 
+import React, { useEffect } from "react";
 import Sidebar from "./component/SideBar/Sidebar";
 import Header from "./component/header/Header.jsx";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -11,12 +12,26 @@ import Products from "./pages/Product/Product.jsx";
 import Categories from "./pages/category/Cagegory.jsx";
 import Login from "./pages/Login/Login";
 import { ToastContainer } from "react-toastify";
+import { socket } from "./socket";
 import 'react-toastify/dist/ReactToastify.css';
-// export const API = "https://olx-backend-code.vercel.app";
-export const API = "https://olx-backend-code-w2v6.vercel.app";
+export const API = "https://olx-backend-code.vercel.app/";
+// export const API = "https://olx-backend-code-w2v6.vercel.app";
 
 function App() {
   const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (token) {
+      // Update socket authentication when token changes
+      socket.auth = { token };
+      if (!socket.connected) {
+        socket.connect();
+      }
+    } else {
+      socket.disconnect();
+    }
+  }, [token]);
+
   // simple auth check; for dev: assume admin token present
   return (
     <div className="flex">
