@@ -9,9 +9,9 @@ import { FiEye, FiUser, FiEdit2 } from "react-icons/fi";
 import { MdBlock, MdLockOpen } from "react-icons/md";
 import { API } from "../../App";
 
- function Product() {
+function Product() {
   const [products, setProducts] = useState([]);
-  const  [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const token = localStorage.getItem("token");
 
   const fetchProducts = async () => {
@@ -49,12 +49,12 @@ import { API } from "../../App";
 
   const handleView = (id) => {
     // window.open(`https://olx-frontend-code-78om.vercel.app/product/${id}`, "_blank");
-    window.open(`http://localhost:5173/product/${id}`, "_blank");
+    window.open(`/product/${id}`, "_blank");
   };
 
   const handleUserProfile = (userId) => {
     // window.open(`https://olx-frontend-code-78om.vercel.app/profile/${userId}`, "_blank");
-    window.open(`http://localhost:5173/profile/${userId}`, "_blank");
+    window.open(`${API}/profile/${userId}`, "_blank");
   };
 
   const handleEdit = (id) => {
@@ -74,9 +74,8 @@ import { API } from "../../App";
           {products.map((p) => (
             <div
               key={p._id}
-              className={`p-4 border rounded-xl shadow-sm hover:shadow-md transition-all duration-200 ${
-                p.blocked ? "bg-red-50 border-red-300" : "bg-white"
-              }`}
+              className={`p-4 border rounded-xl shadow-sm hover:shadow-md transition-all duration-200 ${p.blocked ? "bg-red-50 border-red-300" : "bg-white"
+                }`}
             >
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-4">
@@ -134,11 +133,10 @@ import { API } from "../../App";
 
                   <button
                     onClick={() => toggleBlock(p._id, p.blocked)}
-                    className={`flex items-center gap-1 px-3 py-1 rounded text-white ${
-                      p.blocked
+                    className={`flex items-center gap-1 px-3 py-1 rounded text-white ${p.blocked
                         ? "bg-green-600 hover:bg-green-700"
                         : "bg-red-600 hover:bg-red-700"
-                    }`}
+                      }`}
                   >
                     {p.blocked ? (
                       <>
