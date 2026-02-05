@@ -14,7 +14,7 @@ import Login from "./pages/Login/Login";
 import { ToastContainer } from "react-toastify";
 import { socket } from "./socket";
 import 'react-toastify/dist/ReactToastify.css';
-export const API = "https://olx-backend-code.vercel.app/";
+export const API = "https://olx-backend-code.vercel.app";
 // export const API = "https://olx-backend-code-w2v6.vercel.app";
 
 function App() {
